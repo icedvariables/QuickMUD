@@ -8,6 +8,8 @@ def clientThread(c, addr):
 	
 	c.send(str(len(players.onlinePlayers))+" player(s) currently online...")
 
+	c.send(player.currentArea.display(players.onlinePlayers))
+
 def createCharacter(c, addr):
 	c.send("Name: ")
 	name = c.recv(1024)
