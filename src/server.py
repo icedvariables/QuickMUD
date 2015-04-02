@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-import socket, sys, thread, hashlib
-import clientthread, loginexceptions
-from players import Players
+import socket, sys, thread
+import clientthread
 
 HOST = ''
 PORT = 5678
@@ -19,8 +18,6 @@ WELCOME_MSG = """
 
 class Server:
 	def __init__(self):
-		Players.loadPlayersFromFile()
-
 		self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self._initSocket()
 	
