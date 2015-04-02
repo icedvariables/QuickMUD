@@ -44,10 +44,10 @@ class Server:
 			c.send("QuickMUD: "+MOTD+"\n\n"+WELCOME_MSG)
 
 			c.send("Username: ")
-			username = c.recv(1024)
+			username = c.recv(1024).strip()
 			
 			c.send("Password: ")
-			password = c.recv(1024)
+			password = c.recv(1024).strip()
 			password = hashlib.sha224(password)
 			
 			print addr, "username:", username, "password:", password
