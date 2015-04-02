@@ -9,9 +9,12 @@ class Players:
 	@staticmethod
 	def loadPlayersFromFile(filename="players.p"):
 		with open(filename, "rb") as f:
-			playersInFile = pickle.load(f)
-			print playersInFile
-			Players.players = Players.players + playersInFile
+			try:
+				playersInFile = pickle.load(f)
+				print playersInFile
+				Players.players = Players.players + playersInFile
+			except:
+				pass
 	
 	@staticmethod
 	def save(filename="players.p"):

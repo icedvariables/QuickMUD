@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import socket, sys, thread, hashlib
-import clientthread, players, loginexceptions
+import clientthread, loginexceptions
+from players import Players
 
 HOST = ''
 PORT = 5678

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import hashlib
+import loginexceptions
 from players import Players
 
 def clientThread(c, addr):
@@ -40,7 +41,9 @@ def createCharacter(c):
 	username = c.recv(1024)
 	c.send("Password: ")
 	password = c.recv(1024)
-	password = hashlib.sha224(password)
+	password = hashlib.sha224(password).hexdigest()
+
+	c.send("Creating player...\n")
 
 	player = Players.create(username, password, name, race)
 	Players.save()
