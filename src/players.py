@@ -4,17 +4,23 @@ import cPickle as pickle, loginexceptions
 from player import Player
 
 class Players:
-	def __init__(self):
-		self.players = []
+	players = []
 	
-	def loadPlayersFromFile(self, filename="players.p"):
+	@staticmethod
+	def loadPlayersFromFile(filename="players.p"):
 		with open(filename, "rb") as f:
 			playersInFile = pickle.load(f)
 			print playersInFile
-			self.players = self.players + playersInFile
+			Players.players = Players.players + playersInFile
 	
-	def login(self, username, password):
-		for player in self.players:
+	@staticmethod
+	def save(filename="players.p"):
+		with open(filename, "wb") as f:
+			pickle.dump(Players.players, f)
+
+	@staticmethod
+	def login(username, password):
+		for player in Players.players:
 			if(username == player.name):
 				print "Found player in database with same name as login"
 
@@ -29,8 +35,9 @@ class Players:
 
 		return loginexceptions.UnknownPlayer("Player "+username+" does not exist")
 
-	def create(self, username, password, name, race, filename="players.p"):
-		with open(filename, "rb") as f:
-			players = pickle.load(f)
-		
-		self.players.append(Player(username, password, name, race))
+	@staticmethod
+	def create(username, password, name, race):
+		player = Player(username, password, name, race)
+		Players.players.append(player)
+		return player
+

@@ -18,8 +18,7 @@ WELCOME_MSG = """
 
 class Server:
 	def __init__(self):
-		self.players = players.Players()
-		self.players.loadPlayersFromFile()
+		Players.loadPlayersFromFile()
 
 		self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self._initSocket()
@@ -43,28 +42,8 @@ class Server:
 			
 			c.send("QuickMUD: "+MOTD+"\n\n"+WELCOME_MSG)
 
-			c.send("Username: ")
-			username = c.recv(1024).strip()
+			thread.start_new_thread(clientthread.clientThread, (c, addr))
 			
-			c.send("Password: ")
-			password = c.recv(1024).strip()
-			password = hashlib.sha224(password)
-			
-			print addr, "username:", username, "password:", password
-			
-			try:
-				player = self.players.login(username, password)
-				thread.start_new_thread(clientthread.clientThread, (c, addr, player))
-			
-			except loginexceptions.IncorrectPassword as e:
-				print addr, "Incorrect password:", e
-				c.send("Incorrect password")
-				return
-
-			except loginexceptions.UnknownPlayer as e:
-				print addr, "Unknown player:", e
-				c.send("Could not find a player with that name")
-				return
 
 
 if __name__=="__main__":
