@@ -6,7 +6,7 @@ from player import Player
 def clientThread(c, addr):
 	player = createCharacter(c, addr)
 	
-	c.send(str(len(players.onlinePlayers))+" player(s) currently online...")
+	c.send(str(len(players.onlinePlayers))+" player(s) currently online...\n")
 
 	c.send(player.currentArea.display(players.onlinePlayers))
 

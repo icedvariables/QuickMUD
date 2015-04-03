@@ -11,7 +11,8 @@ class Player:
 		self.race = race
 		self.inventory = inventory
 
-		self.position = (0, 0)
+		self.x = 0
+		self.y = 0
 		self.currentArea = startingArea
 
 		players.onlinePlayers.append(self)

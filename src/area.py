@@ -12,7 +12,7 @@ class Area:
 		for y in self.area:
 			line = []
 			for x in y:
-				line.append(x.icon)
+				line.append(x["icon"])
 			text.append(line)
 		
 		for player in players:
