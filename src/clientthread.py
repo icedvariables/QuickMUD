@@ -7,8 +7,15 @@ def clientThread(c, addr):
 	player = createCharacter(c, addr)
 	
 	c.send(str(len(players.onlinePlayers))+" player(s) currently online...\n")
-
-	c.send(player.currentArea.display(players.onlinePlayers))
+	
+	loop()
+	
+def loop():
+	command = ""
+	while(command != "quit"):
+		c.send("\n" * 20) # Crude way of clearing the screen
+		c.send(player.currentArea.display(players.onlinePlayers))
+		command = c.recv(1024)
 
 def createCharacter(c, addr):
 	c.send("Name: ")
