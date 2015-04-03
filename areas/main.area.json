@@ -1,4 +1,7 @@
 [
 	[{"icon":"#", "collision":true}, {"icon":"#", "collision":true}, {"icon":"#", "collision":true}, {"icon":"#", "collision":true}, {"icon":"#", "collision":true}],
+	[{"icon":"#", "collision":false}, {"icon":"_", "collision":false}, {"icon":"_", "collision":false}, {"icon":"_", "collision":false}, {"icon":"#", "collision":true}],
+	[{"icon":"#", "collision":false}, {"icon":"_", "collision":false}, {"icon":"_", "collision":false}, {"icon":"_", "collision":false}, {"icon":"#", "collision":true}],
+	[{"icon":"#", "collision":false}, {"icon":"_", "collision":false}, {"icon":"_", "collision":false}, {"icon":"_", "collision":false}, {"icon":"#", "collision":true}],
 	[{"icon":"#", "collision":true}, {"icon":"#", "collision":true}, {"icon":"#", "collision":true}, {"icon":"#", "collision":true}, {"icon":"#", "collision":true}]
 ]
