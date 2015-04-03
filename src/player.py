@@ -17,5 +17,12 @@ class Player:
 
 		players.onlinePlayers.append(self)
 	
-	def destroy():
+	def setPosition(self, x, y):
+		self.x = x
+		self.y = y
+	
+	def getPosition(self):
+		return (self.x, self.y)
+
+	def destroy(self):
 		players.onlinePlayers.remove(self)
