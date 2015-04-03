@@ -12,8 +12,8 @@ def clientThread(c, addr):
 
 def createCharacter(c, addr):
 	c.send("Name: ")
-	name = c.recv(1024)
-	c.send("Race: ")
+	name = c.recv(1024).strip()
+	c.send("Race: ").strip()
 	race = c.recv(1024)
 
 	c.send("Creating player...\n")
