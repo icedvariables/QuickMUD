@@ -16,7 +16,10 @@ class Area:
 			text.append(line)
 		
 		for player in players:
-			text[player.y][player.x] = "P"
+			if(self.area[player.y][player.x]["collision"]):
+				print player.name, "is in a wall"
+			else:
+				text[player.y][player.x] = "P"
 
 		ret = ""
 		for y in text:
